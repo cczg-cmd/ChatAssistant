@@ -1,0 +1,54 @@
+# ============================================================================
+# 不能进仓库的东西（体积大 / 含个人数据 / 随机器变）
+#   · 模型 2-3GB：用 tools/download_modelscope.py 下载，或放进 GitHub Release
+#   · config.json 里有 API Key、你的配置列表与角色包 —— **永远不要提交**
+#   · logs/ 里有聊天原文（本机 log_message_text=true 时）—— 同样不要提交
+# ============================================================================
+
+# 模型
+models/
+*.gguf
+
+# 运行时 / 构建产物
+dist/
+build/
+cache/
+logs/
+__pycache__/
+*.py[cod]
+*.spec
+
+# 个人配置
+config.json
+config.json.bak
+
+# 发布物
+*.zip
+*.7z
+*.exe
+
+# 开发期临时产物（保留 README 与测试夹具，其余忽略）
+tmp/*
+!tmp/README.md
+!tmp/ctx_fixture.json
+
+# 早期验证里的截图与报告：含 QQ 截图与本机绝对路径，别外传
+spikes/images/
+spikes/results/
+# 这些是真实的 QQ 窗口截图，只有本机才有意义
+spikes/fixtures/images/
+
+# 第三方下载物（要的人自己 pip / 去官网下）
+tools/get-pip.py
+*.pyz
+*.msi
+
+# 编辑器 / 环境
+.venv/
+venv/
+.idea/
+.vscode/
+.pytest_cache/
+*.log
+Thumbs.db
+desktop.ini

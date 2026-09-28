@@ -1,0 +1,84 @@
+{
+  "taken_at": "00:28:31",
+  "visible": [
+    {
+      "text": "艹了，今晚得修下上下文",
+      "side": "right",
+      "y0": 489,
+      "y1": 525,
+      "key": "234381c74ff43e5f",
+      "visible": true,
+      "is_image": false
+    },
+    {
+      "text": "现在上下文还是U问题",
+      "side": "right",
+      "y0": 605,
+      "y1": 641,
+      "key": "0c4a3327227700d3",
+      "visible": true,
+      "is_image": false
+    },
+    {
+      "text": "便宜丈育猫娘",
+      "side": "left",
+      "y0": 722,
+      "y1": 758,
+      "key": "82cb33a9311dad1a",
+      "visible": true,
+      "is_image": false
+    },
+    {
+      "text": "艹了，说便宜也8便宜了",
+      "side": "right",
+      "y0": 913,
+      "y1": 949,
+      "key": "4014f9f6fdead879",
+      "visible": true,
+      "is_image": false
+    }
+  ],
+  "pool": [
+    {
+      "text": "艹了，今晚得修下上下文",
+      "side": "right",
+      "y0": 489,
+      "y1": 525,
+      "key": "234381c74ff43e5f",
+      "visible": false,
+      "is_image": false
+    },
+    {
+      "text": "现在上下文还是U问题",
+      "side": "right",
+      "y0": 605,
+      "y1": 641,
+      "key": "0c4a3327227700d3",
+      "visible": false,
+      "is_image": false
+    },
+    {
+      "text": "便宜丈育猫娘",
+      "side": "left",
+      "y0": 722,
+      "y1": 758,
+      "key": "82cb33a9311dad1a",
+      "visible": false,
+      "is_image": false
+    },
+    {
+      "text": "艹了，说便宜也8便宜了",
+      "side": "right",
+      "y0": 913,
+      "y1": 949,
+      "key": "4014f9f6fdead879",
+      "visible": false,
+      "is_image": false
+    }
+  ],
+  "virtual_hist": [
+    "换顶尖ai可能真早搞定了，DeepSeek在一堆细节问题浪费太多时间和token了",
+    "誒，官人吃",
+    "啥子哦"
+  ]
+}

@@ -1,0 +1,8 @@
+# ChatAssistant 运行依赖（版本 = 工作区 cache/py311 里实测通过的版本）
+# 安装：cache\py311\python.exe -m pip install -r requirements.txt
+PySide6-Essentials==6.11.2
+llama-cpp-python==0.3.22
+numpy==2.4.6
+
+# 打包 exe 才需要（见 tools/build_exe.py）
+pyinstaller==6.22.3
