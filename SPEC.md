@@ -3670,6 +3670,25 @@ ChatAssistant 开发规格说明书（最终执行版 v2）
            · 未上传/待办（告诉用户）：完整包（含模型 3.11GB）走网盘或 ModelScope；README 里还缺一张
              界面截图（仓库排除了 QQ 截图，需用户自己截一张放进 `docs/`）；Gitee 镜像可选。
 
+      375. **把"含模型"整包分卷传到 GitHub Release（2026-09-28，用户："那你切个卷传个带模型版本到
+           GitHub 上吧，本地的完整包留着"）**：
+           · 重建含模型整包（`tools\build_exe.py --zip` → `dist\ChatAssistant-2026-09-28.zip` 3.11GB，
+             `dist\ChatAssistant\` 里已含 2.33GB 模型）；用户本地那份
+             `dist\ChatAssistant-2026-09-28-with-model.zip`（3.11GB）**保留不动**。
+           · **分卷**：`D:\7-Zip\7z.exe a -t7z -mx1 -v1500m dist\ChatAssistant-1.0.0-with-model.7z dist\ChatAssistant`
+             → 3 卷 **1.46GB + 1.46GB + 0.01GB**（每卷 < GitHub Release 单附件 2GB 上限；
+             用 `-v` 指定"输出卷大小"而不是平分，所以不会出现超限的那一卷）。21 秒完成。
+           · **上传**：`gh release upload v1.0.0 <三卷> --clobber` → 共 3.16GB，
+             实测约 2-3MB/s，耗时约 25 分钟；Release 说明改成"两种包怎么选"
+             （附件1 = 免安装包不含模型 0.8GB；附件2-4 = 含模型分卷，7-Zip 解压 .001 自动拼卷）。
+           · **验证**：`7z t .001` 连读三卷通过（279 files / 4.23GB 原始大小）；
+             Release 四个附件全部 `state=uploaded`（.001/.002 各 1,572,864,000 B、.003 12,976,697 B、
+             不含模型包 838,443,610 B）；下载 URL HEAD 返回 200。
+           · 踩坑：上传/推送期间 **github.com:443 一度连不上**（而 api.github.com 正常）→
+             README 那次提交（`94edff0`，补"含模型分卷"的下载说明）当时推不上去，
+             网络恢复后补推成功（`28319d0..94edff0  main -> main`）。
+           · 结果地址：<https://github.com/cczg-cmd/ChatAssistant/releases/tag/v1.0.0>
+
      - B2 第四十七～五十三轮（上下文顺序与提示词回归；本轮改动**全部经过实测**）
 
       **A. 本地不省 token、API 才省**
