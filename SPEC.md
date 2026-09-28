@@ -3641,6 +3641,35 @@ ChatAssistant 开发规格说明书（最终执行版 v2）
            烟测：直接跑 `dist\ChatAssistant\ChatAssistant.exe` → 模型加载 1.322s（GPU）、
            "自己算掩码已就绪" 1.60s、语法自检 OK；测完关掉实例。dev 版随后重启（run138）。
 
+      374. **发布到 GitHub（2026-09-28，用户："我的用户名 cczg-cmd…你帮我发一下吧。直接放没有模型的包，
+           readme 写好如何使用、下载与安装方式"）**：
+           · **整理**：新增 `.gitignore`（排除 `models/`、`*.gguf`、`config.json(.bak)`、`logs/`、
+             `dist/`、`cache/`、`build/`、`tmp/*`（保留 README 与夹具）、**`spikes/images`、
+             `spikes/results`、`spikes/fixtures/images`（真实 QQ 截图）**、`tools/get-pip.py`、
+             `*.pyz/*.msi/*.zip/*.exe/*.log`）；`git check-ignore -v` 逐个验证关键路径都被挡住。
+             会进仓库的：**148 个文件 / 1.81MB**（代码 + tools 脚本 + SPEC + docs + assets 图标），
+             并扫过隐私：无本机用户名 / C 盘绝对路径 / API Key（SPEC 里有 3-4 行引用过用户自己的
+             角色文案，用户未要求删）。
+           · **README 重写**：简介 / 安全边界 / 两种下载安装方式（免安装包 3 步走、源码运行）/
+             模型表（文件名、大小、**实测 SHA256**、ModelScope 链接与仓库内文件名、Apache-2.0）/
+             使用说明表 / 设置面板能改什么 / 常见问题（无浮窗、模型文件不存在、首启 GPU 慢、
+             SmartScreen、QQ 更新读不到、封号风险）/ 开发与打包（26 个用例的一行命令）/
+             目录结构 / 实现要点（只读 UIA、A1..A6 键名、自算掩码、两段式、角色包）/ 许可致谢。
+           · **LICENSE**：MIT（版权 cczg-cmd）。
+           · **发布**（`gh` 已登录 cczg-cmd）：`git config user.*` 设成 cczg-cmd/56826830@qq.com →
+             commit `6997b22` → `gh repo create ChatAssistant --public --source . --push`
+             → Topics（qq/uia/local-llm/llama-cpp/pyside6/windows/desktop-app/llm）
+             → `gh release create v1.0.0 dist\ChatAssistant-2026-09-28.zip --notes-file …`。
+           · **无模型包**：`tools\build_exe.py --no-model --zip` → **799.6MB**
+             （完整包 3.11GB 已先改名成 `dist\ChatAssistant-2026-09-28-with-model.zip` 保留，
+             未上传 —— GitHub Release 单附件上限 2GB）。烟测无模型包：启动正常、日志明确提示
+             "模型文件不存在（检查 config.paths.model 或 models/ 目录）"。
+           · **验证**：仓库页 HTTP 200、根目录无 gguf/zip/config.json、Release `draft=false`、
+             附件 838,443,610 B 状态 uploaded、下载 URL HEAD 返回 200（799.6MB）。
+             地址：<https://github.com/cczg-cmd/ChatAssistant>｜<https://github.com/cczg-cmd/ChatAssistant/releases/tag/v1.0.0>
+           · 未上传/待办（告诉用户）：完整包（含模型 3.11GB）走网盘或 ModelScope；README 里还缺一张
+             界面截图（仓库排除了 QQ 截图，需用户自己截一张放进 `docs/`）；Gitee 镜像可选。
+
      - B2 第四十七～五十三轮（上下文顺序与提示词回归；本轮改动**全部经过实测**）
 
       **A. 本地不省 token、API 才省**
